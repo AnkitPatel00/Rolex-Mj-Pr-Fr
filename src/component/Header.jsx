@@ -7,6 +7,7 @@ import { getCartAsync ,cartReset} from "../features/cart/cartSlice";
 import { logoutUser } from "../features/authentication/authenticationSlice";
 import { FaHeart, FaShoppingCart, FaUser, FaSearch } from "react-icons/fa";
 import  '../index.css'
+import clothstoreLogo from '../../icons/clothstore.svg'
 
 const Header = () => {
   const [search, setSearch] = useState("");
@@ -46,7 +47,7 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            <img src="../icons/clothstore.svg" alt="logo" width={50} />
+            <img src={clothstoreLogo} alt="logo" width={50} />
           </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
