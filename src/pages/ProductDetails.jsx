@@ -22,8 +22,6 @@ const ProductsDetails = () => {
   
   const [wishlistBtnId, setwishlistBtnId] = useState(null)
   
-  const [order, setOrder] = useState({})
-  
     const [orderDetails,setOrderDetails] = useState({})
 
   const dispatch = useDispatch()
@@ -52,15 +50,6 @@ const ProductsDetails = () => {
     
   }, [location.pathname])
 
-  useEffect(() => {
-
-    // if (clothStatus !== "fetch/success") {
-   
-    //   dispatch(fetchCloths())
-    //    dispatch(getCartAsync())
-    // }
-    
-  },[clothStatus])
 
   useEffect(() => {
       
@@ -74,11 +63,6 @@ const ProductsDetails = () => {
       if(cartStatus === "addCart/success")
     dispatch(getCartAsync())
   }, [cartStatus])
-
-
-  // useEffect(() => {
-  //   dispatch(getCartAsync())
-  // }, [clothStatus])
 
   
   const totalPrice = cloth?.price * (quantity)
@@ -110,17 +94,6 @@ const ProductsDetails = () => {
   const addInWishlistHandle =(clothId) =>
   {
 
-     if (wishlistError === "Token has expired")
-     {
-       if (isloggin)
-       {
-           dispatch(logoutUser())
-      dispatch(wishlistReset())
-      dispatch(cartReset())
-         }
-       dispatch(setPleaseLogin(true))
-    }
-
     setwishlistBtnId(clothId)
     if (isloggin)
     {
@@ -145,27 +118,12 @@ dispatch(setPleaseLogin(true))
        const wishlistInfo = {
       clothsId:clothId
   }
-
       dispatch(removeWishlistAsync(wishlistInfo)).finally(()=>setwishlistBtnId(null))
-
-   
   }
 
    //hanlde in cart
 
   const handleInCart = (clothId) => {
-
-     if (cartError === "Token has expired")
-     {
-       if (isloggin)
-       {
-           dispatch(logoutUser())
-      dispatch(wishlistReset())
-      dispatch(cartReset())
-         }
-       dispatch(setPleaseLogin(true))
-    }
-
 
    if (isloggin)
    {
@@ -183,9 +141,6 @@ dispatch(setPleaseLogin(true))
 
       }
   }
-  
-
-
   
   
   return (

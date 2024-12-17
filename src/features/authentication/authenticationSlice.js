@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
-const apiUrl = "https://major-project-one-backend-six.vercel.app"
+const apiUrl = "https://clothstoreserver.vercel.app"
 
 
 //regsiter user

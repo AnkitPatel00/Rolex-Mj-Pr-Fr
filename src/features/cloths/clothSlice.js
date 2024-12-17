@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-const apiUrl = "https://major-project-one-backend-six.vercel.app/api/cloths/get/all"
+const apiUrl = "https://clothstoreserver.vercel.app/api/cloths/get/all"
 
 //fetch cloths
 

@@ -3,7 +3,7 @@ import { Link,useLocation,useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getWishlistAsync } from "../features/wishlist/wishlistSlice"
 import { addWishlistAsync, removeWishlistAsync } from '../features/wishlist/wishlistSlice'
-import { addtoCartAsync, cartReset } from "../features/cart/cartSlice"
+import { addtoCartAsync } from "../features/cart/cartSlice"
 import LoadingSpinner from '../component/LoadingSpinner'
 import '../index.css'
 const MyWishlist = () => {
@@ -34,7 +34,7 @@ dispatch(getWishlistAsync())
     }
   }, [location])
   
-  const { wishlistItem, totalWishlistItems, wishlistStatus ,wishlistError } = useSelector((state) => state.wishlistState)
+  const { wishlistItem, totalWishlistItems, wishlistStatus } = useSelector((state) => state.wishlistState)
 
   const { cartCloths, cartStatus} = useSelector((state) => state.cartState)
   

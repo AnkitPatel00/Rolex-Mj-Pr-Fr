@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 
 // const dispatch = useDispatch()
 
-const apiUrl = "https://major-project-one-backend-six.vercel.app"
+const apiUrl = "https://clothstoreserver.vercel.app"
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token")

@@ -3,7 +3,7 @@ import { setPleaseLogin } from '../authentication/authenticationSlice';
 
 //add wishlist items
 
-const apiUrl ="https://major-project-one-backend-six.vercel.app"
+const apiUrl ="https://clothstoreserver.vercel.app"
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
