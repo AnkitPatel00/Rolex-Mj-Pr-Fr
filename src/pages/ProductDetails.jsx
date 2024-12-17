@@ -71,7 +71,7 @@ const ProductsDetails = () => {
 
   const discountedPrice = cloth?.discountedPrice * (quantity)
 
-  const deliveryCharges = cloth?.price>500?0:40
+  const deliveryCharges = discountedPrice>500?0:40
 
   const totalAmount =  cloth?.discountedPrice * (quantity) + deliveryCharges 
   

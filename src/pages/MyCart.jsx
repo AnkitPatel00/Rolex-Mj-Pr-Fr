@@ -39,7 +39,7 @@ navigate('/login')
   const totalPrice = cartCloths?.map((cartCloth) => cartCloth.clothsId.price * cartCloth.quantity).reduce((acc, price) => acc + price, 0)
   const discountedPrice = cartCloths?.map((cartCloth) => cartCloth.quantity * (cartCloth.clothsId.price - (cartCloth.clothsId.price * (cartCloth.clothsId.discount * 0.01)))).reduce((acc, price) => acc + price, 0)
   const discountPrice = (totalPrice - discountedPrice).toFixed(2)
-  const deliveryCharges = totalPrice>500?0:40
+  const deliveryCharges = discountedPrice>500?0:40
   const totalAmount =  (discountedPrice + deliveryCharges)
   
   

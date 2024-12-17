@@ -177,7 +177,7 @@ const cloths = orderState.cloths.map((cloth) => ({ clothsId: cloth.clothsId._id,
             <p>Delivery Charges: 
              
               
-                 {orderState.priceDetails.totalPrice >= 500 ?
+                 {orderState.priceDetails.deliveryCharges === 0 ?
              <> <span className="fs-6 text-decoration-line-through fw-light "> &#8377;40</span>
                <span className='text-success fs-6 fw-normal'> Free </span></> :
               <span>+40 Delivery</span>
