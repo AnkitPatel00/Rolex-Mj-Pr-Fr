@@ -6,9 +6,7 @@ import { getWishlistAsync, wishlistReset } from "../features/wishlist/wishlistSl
 import { getCartAsync ,cartReset} from "../features/cart/cartSlice";
 import { logoutUser } from "../features/authentication/authenticationSlice";
 import { FaHeart, FaShoppingCart, FaUser, FaSearch } from "react-icons/fa";
-import '../index.css'
-import clothstoreLogo from '../../icons/clothstore.svg'
-
+import  '../index.css'
 
 const Header = () => {
   const [search, setSearch] = useState("");
