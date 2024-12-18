@@ -19,12 +19,9 @@ const logoutTime = (timeStamp-currentTime)
   
 
   useEffect(() => {
-    console.log('Logout useEffect Run without timeout')
     if (logoutTime > 0)
     {
-      console.log('setTimeout Start with:',logoutTime)
        const t = setTimeout(() => {
-      console.log('logout')
       logoutDispatch()
     },logoutTime)
     return (() => {
@@ -33,10 +30,6 @@ const logoutTime = (timeStamp-currentTime)
     }  
   },[logoutTime])
   
-
-
-  
-  // console.log(new Date().setMinutes(new Date().getMinutes() + 1))
   
   return (
     <>
