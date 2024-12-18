@@ -143,10 +143,10 @@ dispatch(setPleaseLogin(true))
   
   return (
     <>
-      <div className="container py-4">
+      <div className="container p-4">
         
       <LoadingSpinner spinner={clothStatus === "fetch/loading"} />
-      {clothStatus === "fetch/success" && (<div className="row ms-5">
+      {clothStatus === "fetch/success" && (<div className="row mx-auto">
    <div className="col-lg-4">
   <div className="d-flex justify-content-center">
     <div className="cloth-container rounded p-4 position-relative">
