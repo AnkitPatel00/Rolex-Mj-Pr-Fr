@@ -43,7 +43,15 @@ navigate('/login')
 
     const handleAddressDelete = (addressId) => {
     dispatch(deleteAddresAsync({ addressId })) 
-  }
+    }
+  
+  useEffect(() => {
+    if (userStatus === 'userUpdate/success')
+    {
+dispatch(userFetchAsync())
+    }
+    
+  },[userStatus])
 
   useEffect(() => {
     if (addressStatus === "deleteAddress/success" || addressStatus === 'addAddress/success' || addressStatus ==='updateAddress/success' )

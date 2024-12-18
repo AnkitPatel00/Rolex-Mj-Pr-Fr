@@ -248,7 +248,7 @@ dispatch(fetchCloths());
                   onChange={(e)=>setSearch(e.target.value)}
         />
         <button className="btn btn-primary" type="button">
-         <i class="fa-solid fa-magnifying-glass"></i>
+         <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
     </div>
