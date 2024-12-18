@@ -240,7 +240,7 @@ dispatch(fetchCloths());
         <div className='product-container' style={{ maxWidth: "1500px", width: "100%" }}>
   <div className="row justify-content-center my-4">
     <div className="col-md-6">
-      <div className="input-group">
+      <div className="input-group px-3">
         <input
           type="text"
           className="form-control"
