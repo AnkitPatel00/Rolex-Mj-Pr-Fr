@@ -18,14 +18,14 @@ const NewCloths = () => {
   const { isloggin } = useSelector((state) => state.authenticationState);
   const { cloths, clothStatus, clothError } = useSelector((state) => state.clothsState);
   
-  
   useEffect(() => {
     if (clothStatus !== "fetch/success")
     {
       dispatch(fetchCloths());
     }
+  }, [clothStatus, location.pathname]);
+  
 
-  }, [clothStatus,location.pathname]);
 
   useEffect(() => {
     if (isloggin)
@@ -34,7 +34,7 @@ dispatch(getWishlistAsync()).then(() => {
        dispatch(getCartAsync())
     }) 
     }
-  },[])
+  },[isloggin,location.pathname])
 
   const newArrivalCloths = cloths?.map((cloth) => cloth).slice(0, 4)
  

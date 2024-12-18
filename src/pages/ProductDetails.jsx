@@ -45,8 +45,7 @@ const ProductsDetails = () => {
   
   useEffect(() => {
 
-      dispatch(fetchCloths())
-    dispatch(getCartAsync())
+    dispatch(fetchCloths())
     
   }, [location.pathname])
 
@@ -138,7 +137,6 @@ dispatch(setPleaseLogin(true))
     else
     {
 dispatch(setPleaseLogin(true))
-
       }
   }
   
@@ -196,7 +194,7 @@ dispatch(setPleaseLogin(true))
   </div>
 </div>
 <div className="col-lg-8">
-  <h1 className="display-5">{cloth.title}</h1>
+  <h1 className="display-6">{cloth.title}</h1>
   <p className={`fs-6 fw-bold p-0 ${cloth.rating >= 4 ? "btn btn-success" : cloth.rating >= 3 ? "btn btn-warning" : "btn btn-danger"} px-2`}>
     {cloth.rating}
   </p>

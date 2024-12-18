@@ -2,7 +2,7 @@ import '../index.css'
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { fetchCloths } from "../features/cloths/clothSlice"
+import { fetchCloths,searchInputValue } from "../features/cloths/clothSlice"
 import ProductsCard from './ProductsCard'
 import LoadingSpinner from './LoadingSpinner'
 import ErrorMessage from './ErrorMessage'
@@ -13,13 +13,15 @@ const ClothsList = () => {
   const navigate = useNavigate()
   const { cloths, clothStatus, searchInput, clothError } = useSelector((state) => state.clothsState)
  
-
+  const [search, setSearch] = useState("");
+  
   const [category, setCategory] = useState(location.state ? [location.state] : [])
   const [rating, setRating] = useState("")
   const [price, setPrice] = useState("")
   const [highPrice, setHighPrice] = useState(0)
   const [lowPrice, setLowPrice] = useState(0)
   const [range, setRange] = useState(0)
+
 
   useEffect(() => {
     if (clothStatus !== "fetch/success")
@@ -30,9 +32,7 @@ dispatch(fetchCloths());
 
   useEffect(() => {
     navigate(location.pathname,{state:null})
-  },[])
-  
-
+  }, [])
 
  useEffect(() => {
   if (clothStatus === "fetch/success") {
@@ -75,7 +75,7 @@ dispatch(fetchCloths());
     }
   }
 
-  const searchFilter = searchInput ? cloths?.filter(cloth => cloth.title.includes(searchInput) || cloth.title.toLowerCase().includes(searchInput)) : [...cloths]
+  const searchFilter = search ? cloths?.filter(cloth => cloth.title.includes(search) || cloth.title.toLowerCase().includes(search)) : [...cloths]
   
   const rangeFilter = range ? searchFilter?.filter((cloth) => (cloth.discountedPrice) <= range) : searchFilter
 
@@ -233,21 +233,36 @@ dispatch(fetchCloths());
   </div>
 </div>
 
-
+       
         
         {/* product container */}
        
-        <div className='product-container' style={{ maxWidth: "1500px", width: "100%" }} >
-          
-          <ErrorMessage error={clothError} />
-          
-            <LoadingSpinner spinner={clothStatus === "fetch/loading"} />
+        <div className='product-container' style={{ maxWidth: "1500px", width: "100%" }}>
+  <div className="row justify-content-center my-4">
+    <div className="col-md-6">
+      <div className="input-group">
+        <input
+          type="text"
+          className="form-control"
+                  placeholder="Search for cloths..."
+                  onChange={(e)=>setSearch(e.target.value)}
+        />
+        <button className="btn btn-primary" type="button">
+         <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
-          {clothStatus === "fetch/success" &&          
-            <ProductsCard cloths={priceSortBy}/>            
-          }
-          
-        </div>
+  <ErrorMessage error={clothError} />
+
+  <LoadingSpinner spinner={clothStatus === "fetch/loading"} />
+
+  {clothStatus === "fetch/success" && (
+    <ProductsCard cloths={priceSortBy} />
+  )}
+</div>
+
         
           {/* product container */}
          

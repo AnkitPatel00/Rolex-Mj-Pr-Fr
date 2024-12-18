@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios';
 
 const apiUrl = "https://clothstoreserver.vercel.app"
 
@@ -107,7 +106,6 @@ const authenticationSlice = createSlice({
        state.error = action.error.message;
      })
 
-
     //user login
 
     builder.addCase(userLoginAsync.pending, (state) => {
@@ -116,13 +114,12 @@ const authenticationSlice = createSlice({
      builder.addCase(userLoginAsync.fulfilled, (state,action) => {
        state.authStatus = "userLogin/success"
        state.message = null
-       const minutes = new Date().setMinutes(new Date().getMinutes()+59)
-        localStorage.setItem("logoutTime", minutes)
+       const timeStamp = (new Date().setHours(new Date().getHours() + 1))-60000
+        localStorage.setItem("logoutTime", timeStamp)
        localStorage.setItem("token", action.payload.token)
        localStorage.setItem("user", JSON.stringify(action.payload.user))
 
        state.isloggin = true
-      //  state.error=null
        
      })
      builder.addCase(userLoginAsync.rejected, (state,action) => {

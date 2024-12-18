@@ -2,17 +2,18 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import {searchInputValue } from "../features/cloths/clothSlice";
-import { getWishlistAsync, wishlistReset } from "../features/wishlist/wishlistSlice";
-import { getCartAsync ,cartReset} from "../features/cart/cartSlice";
-import { logoutUser } from "../features/authentication/authenticationSlice";
-import { FaHeart, FaShoppingCart, FaUser, FaSearch } from "react-icons/fa";
+import { getWishlistAsync} from "../features/wishlist/wishlistSlice";
+import { getCartAsync } from "../features/cart/cartSlice";
+import { FaHeart, FaShoppingCart} from "react-icons/fa";
 import '../index.css'
 import clothstoreLogo from '../../icons/clothstore.svg'
+import { useLogout } from "../useLogout";
 
 const Header = () => {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
+  const {logoutDispatch} = useLogout()
 
   const { isloggin } = useSelector((state) => state.authenticationState);
 
@@ -21,9 +22,11 @@ const Header = () => {
 
   const localUser = JSON.parse(localStorage.getItem("user"));
 
-  useEffect(() => {
-    dispatch(searchInputValue(search));
-  }, [search, dispatch]);
+  const handleLogout = () => {
+      logoutDispatch()
+  };
+
+
 
   useEffect(() => {
     if (isloggin)
@@ -32,93 +35,103 @@ const Header = () => {
     dispatch(getCartAsync())
  })
     }
-  },[])
+  },[isloggin])
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    dispatch(wishlistReset())
-    dispatch(cartReset())
-  };
+
 
   return (
 
-    <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            <img src={clothstoreLogo} alt="logo" width={50} />
+    <header style={{marginBottom:"80px"}}>
+
+      <nav className="navbar navbar-expand-sm bg-body-tertiary fixed-top">
+      <div className="container">
+          <Link className="navbar-brand me-auto" to="/">
+           <img src={clothstoreLogo} alt="logo" width={50} />
           </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                <NavLink className="nav-link" to="/">Home</NavLink>
+       
+        <div
+          className="offcanvas offcanvas-end"
+          tabIndex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div className="offcanvas-header">
+            <Link className="navbar-brand me-auto" to="/">
+           <img src={clothstoreLogo} alt="logo" width={50} />
+          </Link>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div className="offcanvas-body">
+            <ul className="navbar-nav justify-content-center flex-grow-1 pe-3">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/cloths">Cloths</NavLink>
+                <Link className="nav-link" to="/cloths">Cloths</Link>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/about">About</NavLink>
-              </li>
-            </ul>
+             <li className="nav-item">
+                <Link className="nav-link" to="/about">About</Link>
+                </li>
+              </ul>  
 
-            {location.pathname === "/cloths" && (
-              <div className="d-flex mx-auto w-50">
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Search Cloths..."
-                  />
-                  <span className="input-group-text bg-primary text-white">
-                    <FaSearch />
-                  </span>
-                </div>
-              </div>
-            )}
+             
 
-            <ul className="navbar-nav ms-auto">
-              
-              {isloggin ? (
-                <>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to={`/user/profile/${localUser.username}`}>
-                      <FaUser className="me-1" /> {localUser.username}/ Orders
-                    </NavLink>
-                  </li>
-                  <li className="nav-item me-4">
-                    <button className="btn nav-link" onClick={handleLogout}>Logout</button>
-                  </li>
+              <div className="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+             
+
+                {isloggin ? (
+                < >
+              <div style={{display:"flex"}}>
+              <NavLink style={{color:"white",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"20px", backgroundColor: "lightgrey", width: "40px", height: "40px",borderRadius:"20px"}} className="nav-link me-3 " to={`/user/profile/${localUser.username}`}>
+                  {localUser.firstname.charAt(0)}
+                </NavLink>
+      
+                    <button className="btn btn-danger me-3" onClick={handleLogout}>Logout</button>
+            </div>
                 </>
               ) : (
-                <li className="nav-item me-4">
-                  <NavLink className="nav-link" to="/login">Login</NavLink>
-                </li>
+             
+                  <NavLink className="me-3 btn btn-primary nav-list" to="/login">Login</NavLink>
+     
               )}
+                
+              </div>
+            </div>
+          </div>
 
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/wishlist">
-                  <FaHeart className="me-1" />
+          <NavLink className="nav-link me-2" to="/wishlist">
+                   <FaHeart className="me-1" />
                   <span>{totalWishlistItems}</span>
                 </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/cart">
+        
+          
+               <NavLink className="nav-link" to="/cart">
                   <FaShoppingCart className="me-1" />
                   <span>{totalCartItem}</span>
                 </NavLink>
-              </li>
+          
+           <button
+          className="navbar-toggler ms-3"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        
+      </div>
+    </nav>
 
-            </ul>
-          </div>
-        </div>
-      </nav>
     </header>
+
   );
 };
 

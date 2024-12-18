@@ -18,8 +18,6 @@ const UserProfile = () => {
   const { userStatus, user, userError } = useSelector((state) => state.userState)
   const {address,addressStatus,addressError} = useSelector((state)=>state.addressState)
   const { orders, orderStaus, orderError } = useSelector((state) => state.orderState)
-
-  console.log(orderStaus)
   
     useEffect(() => {
     if (!isloggin)

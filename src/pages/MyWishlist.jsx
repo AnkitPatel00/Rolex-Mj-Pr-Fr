@@ -19,6 +19,9 @@ const MyWishlist = () => {
 
 
   const { isloggin } = useSelector((state) => state.authenticationState)
+  const { wishlistItem, totalWishlistItems, wishlistStatus } = useSelector((state) => state.wishlistState)
+
+  const { cartCloths, cartStatus} = useSelector((state) => state.cartState)
 
    useEffect(() => {
     if (!isloggin)
@@ -34,16 +37,10 @@ dispatch(getWishlistAsync())
     }
   }, [location])
   
-  const { wishlistItem, totalWishlistItems, wishlistStatus } = useSelector((state) => state.wishlistState)
-
-  const { cartCloths, cartStatus} = useSelector((state) => state.cartState)
   
   const inCart = cartCloths?.map((wishlist) => wishlist.clothsId._id)
 
-
   const wishlistCloths = wishlistItem?.map(cloth => ({...cloth.clothsId,discountedPrice:cloth.clothsId.price - ((cloth.clothsId.price*cloth.clothsId.discount)*0.01)}))
-
-
   
    //hanlde in whishlist
 

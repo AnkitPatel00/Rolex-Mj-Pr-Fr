@@ -1,33 +1,48 @@
 import Header from './component/Header.jsx'
-import { useEffect} from 'react'
-import { logoutUser } from './features/authentication/authenticationSlice.js'
-import { useDispatch } from "react-redux"
-import { wishlistReset } from './features/wishlist/wishlistSlice.js'
-import { cartReset } from './features/cart/cartSlice.js'
+import { useEffect, useState} from 'react'
 import Footer from './component/Footer.jsx'
-import { Outlet} from 'react-router-dom'
+import { Outlet,useLocation} from 'react-router-dom'
 import LoginPleaseToast from './component/LoginPleaseToast.jsx'
+import { useDispatch,useSelector } from "react-redux";
+import { useLogout } from './useLogout.js'
+
 
 function App() {
 
-  const dispatch = useDispatch()
-  const currentTime = new Date().setMinutes(new Date().getMinutes())
-  const logoutTime = localStorage.getItem("logoutTime")
+   const timeStamp = localStorage.getItem("logoutTime")
+  const currentTime = Date.now()
+const logoutTime = (timeStamp-currentTime)
+
+  const { logoutDispatch } = useLogout()
+
+  const { isloggin ,authStatus,error} = useSelector((state) => state.authenticationState)
+  
 
   useEffect(() => {
-    if (logoutTime < currentTime)
+    console.log('Logout useEffect Run without timeout')
+    if (logoutTime > 0)
     {
-      dispatch(logoutUser());
-      dispatch(wishlistReset());
-      dispatch(cartReset());
-    }
-  },[location.pathname])
+      console.log('setTimeout Start with:',logoutTime)
+       const t = setTimeout(() => {
+      console.log('logout')
+      logoutDispatch()
+    },logoutTime)
+    return (() => {
+      clearTimeout(t)
+    })
+    }  
+  },[logoutTime])
+  
+
+
+  
+  // console.log(new Date().setMinutes(new Date().getMinutes() + 1))
   
   return (
     <>
       <LoginPleaseToast/>
-      <Header />
-     <Outlet/>
+      <Header  />
+     <Outlet />
       <Footer/>
     </>
   )

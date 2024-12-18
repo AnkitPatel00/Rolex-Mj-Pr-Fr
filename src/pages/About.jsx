@@ -3,7 +3,7 @@ const About = () => {
     <div className="container py-4">
 
        <h1>About Us</h1>
-    <p>Welcome to <span class="highlight">Cloth Store</span>, your ultimate destination for stylish, affordable, and high-quality fashion. We are committed to helping you discover clothing that makes you look and feel your best. With a diverse range of options, we cater to all styles, occasions, and preferences, ensuring there's something for everyone!</p>
+    <p>Welcome to <span className="highlight">Cloth Store</span>, your ultimate destination for stylish, affordable, and high-quality fashion. We are committed to helping you discover clothing that makes you look and feel your best. With a diverse range of options, we cater to all styles, occasions, and preferences, ensuring there's something for everyone!</p>
     
     <h2>Our Mission</h2>
     <p>At Cloth Store, our mission is simple: to provide fashionable, comfortable, and durable clothing at prices you’ll love. We aim to make shopping an enjoyable experience while helping you express your unique style with confidence.</p>
@@ -24,7 +24,7 @@ const About = () => {
       <li><strong>Fast & Reliable Delivery:</strong> Get your favorite outfits delivered quickly and safely to your doorstep.</li>
     </ul>
     
-    <p>Explore our collection today and transform your wardrobe with <span class="highlight">Cloth Store</span> – where style meets affordability and quality.</p>
+    <p>Explore our collection today and transform your wardrobe with <span className="highlight">Cloth Store</span> – where style meets affordability and quality.</p>
 
 
   </div>

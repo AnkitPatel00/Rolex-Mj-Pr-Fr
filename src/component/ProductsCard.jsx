@@ -122,7 +122,8 @@ const ProductsCard = ({ cloths }) => {
             <h3 style={{ fontSize: "20px", fontWeight: "normal" }}>{cloth.title.substring(0, 20) + '...'}</h3>
             <p>{cloth.rating} <i className="fa-solid fa-star" style={{color:cloth.rating>4?"green":"orange"}}></i></p>
             <h5>&#8377;<span style={{ fontSize: "30px", marginRight: "10px" }}>{(cloth.discountedPrice).toFixed(2)}</span>
-              <span style={{ fontSize: "15px", marginRight: "5px" ,fontWeight:"lighter",textDecoration:""}}>&#8377;{cloth.price}</span> <span style={{ fontSize: "20px", marginRight: "5px" ,color:"green",fontWeight:"normal"}}>{cloth.discount}% off</span></h5>
+            
+            <span className="fs-6 text-decoration-line-through fw-light">&#8377;{cloth.price}</span> <span style={{ fontSize: "20px", marginRight: "5px", color: "green", fontWeight: "normal" }}>{cloth.discount}% off</span></h5>
             </div>
       ))}
       </div>
