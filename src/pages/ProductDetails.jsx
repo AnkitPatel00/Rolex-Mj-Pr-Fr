@@ -8,6 +8,7 @@ import { setPleaseLogin,logoutUser } from '../features/authentication/authentica
 import '../index.css'
 import LoadingSpinner from "../component/LoadingSpinner"
 import ProductsCard from "../component/ProductsCard"
+import RatingStars from "../component/RatingStars"
   
 
 
@@ -194,10 +195,8 @@ dispatch(setPleaseLogin(true))
   </div>
 </div>
 <div className="col-lg-8">
-  <h1 className="display-6">{cloth.title}</h1>
-  <p className={`fs-6 fw-bold p-0 ${cloth.rating >= 4 ? "btn btn-success" : cloth.rating >= 3 ? "btn btn-warning" : "btn btn-danger"} px-2`}>
-    {cloth.rating}
-  </p>
+            <h1 className="display-6">{cloth.title}</h1>
+            <RatingStars rating={cloth.rating} />        
   <p>
     <span className='fs-4 fw-bold'>&#8377; {(cloth.discountedPrice).toFixed(2)} </span>
     <span className="fs-6 text-decoration-line-through fw-light">&#8377; {cloth.price}</span>

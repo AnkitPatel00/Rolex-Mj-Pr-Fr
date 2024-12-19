@@ -6,6 +6,7 @@ import { addWishlistAsync, removeWishlistAsync } from '../features/wishlist/wish
 import { addtoCartAsync } from "../features/cart/cartSlice"
 import LoadingSpinner from '../component/LoadingSpinner'
 import '../index.css'
+import RatingStars from "../component/RatingStars"
 const MyWishlist = () => {
 
   const [wishlistBtnId, setWishlistBtnId] = useState(null)
@@ -155,7 +156,7 @@ alert("Login Please")
             
 
             <h3 style={{ fontSize: "20px", fontWeight: "normal" }}>{cloth.title.slice(0, 25) + '...'}</h3>
-            <p>{cloth.rating} <i className="fa-solid fa-star" style={{color:cloth.rating>4?"green":"orange"}}></i></p>
+          <RatingStars rating={cloth.rating} />
             <h5>&#8377;<span style={{ fontSize: "30px", marginRight: "10px" }}>{(cloth.discountedPrice).toFixed(2)}</span>
             <span style={{ fontSize: "15px", marginRight: "5px", fontWeight: "lighter", textDecoration: "" }}>&#8377;{cloth.price}</span>
             <span style={{ fontSize: "20px", marginRight: "5px", color: "green", fontWeight: "normal" }}>{cloth.discount}% off</span></h5>

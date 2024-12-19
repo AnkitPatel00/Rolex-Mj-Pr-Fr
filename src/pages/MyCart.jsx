@@ -6,6 +6,7 @@ import { addWishlistAsync} from "../features/wishlist/wishlistSlice"
 import { addOrderAsync } from "../features/order/orderSlice"
 import LoadingSpinner from "../component/LoadingSpinner"
 import ErrorMessage from "../component/ErrorMessage"
+import RatingStars from "../component/RatingStars"
 
 
 const MyCart = () => {
@@ -58,8 +59,7 @@ navigate('/login')
   
   const handleOrder = () => {
     if (defaultaAdddress)
-    {
-     
+    { 
       dispatch(addOrderAsync(order)).then(() => {
         dispatch(removeAllCartItemsAsync())
       })
@@ -134,7 +134,7 @@ navigate('/login')
               </div>
                <div className="col-6 pb-1">
         <h3 className="fs-5">{cloth.clothsId.title}</h3>
-                 <p className={`fs-6 fw-bold p-0 ${cloth.clothsId.rating>=4?"btn btn-success":cloth.clothsId.rating>=3?"btn btn-warning":"btn btn-danger"} px-2`}> { cloth.clothsId.rating}</p>
+        <RatingStars rating={cloth.clothsId.rating}/>
             <p><span className='fs-4 fw-bold'> &#8377; {(cloth.clothsId.price - cloth.clothsId.price*(cloth.clothsId.discount*0.01)).toFixed(2)} </span> <span className="fs-6 text-decoration-line-through fw-light">&#8377; {cloth.clothsId.price}</span><span className='text-success fs-5 fw-normal'> {cloth.clothsId.discount}% off</span></p>
         <select disabled={cartStatus ==="updateCart/Loading"?true:false } value={cloth.size} className="form-select w-auto mb-3" onChange={(e)=>updateCartSize(cloth.clothsId._id,e.target.value)}>
             {cloth.clothsId.size.map((size,index) =>
