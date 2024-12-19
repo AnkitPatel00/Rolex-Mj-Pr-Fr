@@ -2,13 +2,19 @@ import { useNavigate ,useLocation, Link} from "react-router-dom"
 import { fetchAddressAsync ,deleteAddresAsync} from "../features/address/addressSlice"
 import { userFetchAsync } from "../features/user/userSlice"
 import { useDispatch,useSelector } from "react-redux"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import LoadingSpinner from "../component/LoadingSpinner"
 import OrderList from "../component/OrderList"
 import { fetchOrderAsync } from "../features/order/orderSlice"
 import ErrorMessage from '../component/ErrorMessage'
 
 const UserProfile = () => {
+
+     const timeStamp = localStorage.getItem("logoutTime")
+   const currentTime = Date.now()
+  const logoutTime = (timeStamp - currentTime)
+
+
   
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,6 +24,10 @@ const UserProfile = () => {
   const { userStatus, user, userError } = useSelector((state) => state.userState)
   const {address,addressStatus,addressError} = useSelector((state)=>state.addressState)
   const { orders, orderStaus, orderError } = useSelector((state) => state.orderState)
+
+
+  
+
   
     useEffect(() => {
     if (!isloggin)
@@ -94,14 +104,16 @@ dispatch(userFetchAsync())
               <LoadingSpinner spinner={isloggin && userStatus === "userinfo/Loading"} />
             
 { isloggin && userStatus === "userinfo/success" &&
-            <div className="card-body" style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
+              <div className="card-body" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              
               <div style={{background:"lightgrey",width:"200px",height:"200px",border:"1px solid lightgrey",borderRadius:"100px",display:"flex",justifyContent:"center",alignItems:"center"}}>
  <h3 className="display-7 text-light">{user.firstname} {user.lastname}</h3>
               </div>
           <p className="fs-5 text-muted">Username: {user.username}</p>
           <p className="fs-6 text-muted">Email: {user.email}</p>
           <p className="fs-6 text-muted">Phone: {user.mobilenumber}</p>
-          <Link className="btn btn-outline-primary mt-3" to="/user/profile/edit" state={user}>Edit Profile</Link>
+                <Link className="btn btn-outline-primary mt-3" to="/user/profile/edit" state={user}>Edit Profile</Link>
+                  <p className="mt-3">Auto Logout in <span className="fw-bold">{(logoutTime*1.6667e-5).toFixed(0)}</span> Minutes</p>
             </div>
             
 }
