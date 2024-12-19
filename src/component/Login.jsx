@@ -24,6 +24,11 @@ const Login = () => {
     dispatch(userLoginAsync(loginData))
   }
 
+  const handleRegister = (e) => {
+    e.preventDefault()
+     navigate('/register')
+  }
+
   useEffect(() => {
     if (isloggin)
     {
@@ -57,7 +62,7 @@ const Login = () => {
     borderRadius:"50px"
   }}
 >
-  <form onSubmit={handleLogin} style={{ width: "100%", maxWidth: "400px",padding:"20px" }}> {/* Set form width */}
+  <form action="submit" onSubmit={handleLogin} style={{ width: "100%", maxWidth: "400px",padding:"20px" }}> {/* Set form width */}
           <h1 style={{ marginBottom: "20px" }}>Login</h1>
           
           <div className="mb-3">
@@ -85,7 +90,7 @@ required
          
           
           <button disabled={authStatus === "userLogin/Loading"} style={{ padding: "10px 20px" ,marginRight:"20px",backgroundColor:"DodgerBlue",color:"white",border:"1px solid DodgerBlue",borderRadius:"10px",marginBottom:"20px"}}>{authStatus === "userLogin/Loading" ? "Please Wait" : "Login"} </button>
-           <button onClick={()=> navigate('/register')} style={{ padding: "10px 20px" ,marginRight:"20px",backgroundColor:"MediumSeaGreen",color:"white",border:"1px solid MediumSeaGreen",borderRadius:"10px"}}>Register</button>
+           <button onClick={handleRegister} style={{ padding: "10px 20px" ,marginRight:"20px",backgroundColor:"MediumSeaGreen",color:"white",border:"1px solid MediumSeaGreen",borderRadius:"10px"}}>Register</button>
   {authStatus === "userLogin/reject" && error && <p className="text-danger mt-3" style={{ fontSize: "1.1rem" }}>{error}</p>}
         </form>
 </div>

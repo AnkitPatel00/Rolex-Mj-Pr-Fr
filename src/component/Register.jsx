@@ -40,6 +40,11 @@ const Register = () => {
     dispatch(userRegisterAsync(registrationData));
   };
 
+  const handleLogin = (e) => {
+    e.preventDefault()
+    navigate('/login')
+  }
+
   
 
   return (
@@ -67,7 +72,7 @@ const Register = () => {
     borderRadius:"50px"
   }}
 >
-  <form onSubmit={handleRegister} style={{ width: "100%", maxWidth: "400px",padding:"20px" }}> {/* Set form width */}
+  <form action="submit" onSubmit={handleRegister} style={{ width: "100%", maxWidth: "400px",padding:"20px" }}> {/* Set form width */}
           <h1 style={{ marginBottom: "20px" }}>Register</h1>
           
     <div className="mb-3">
@@ -146,7 +151,7 @@ const Register = () => {
           <button disabled={registerStatus === "userRegister/Loading"} style={{ padding: "10px 20px", marginRight: "20px", backgroundColor: "DodgerBlue", color: "white", border: "1px solid DodgerBlue", borderRadius: "10px", marginBottom: "20px" }}>
            {registerStatus === "userRegister/Loading" ? "Please Wait" : "Register"} 
           </button>
-           <button onClick={()=> navigate('/login')} style={{ padding: "10px 20px" ,marginRight:"20px",backgroundColor:"MediumSeaGreen",color:"white",border:"1px solid MediumSeaGreen",borderRadius:"10px"}}>Login</button>
+           <button onClick={handleLogin} style={{ padding: "10px 20px" ,marginRight:"20px",backgroundColor:"MediumSeaGreen",color:"white",border:"1px solid MediumSeaGreen",borderRadius:"10px"}}>Login</button>
 {registerStatus ==="userRegister/success" && message && <p className="text-info mt-1" style={{ fontSize: "1.1rem" }}>{message}</p> }
      {registerStatus === "userRegister/reject" && error && <p className="text-danger mt-3" style={{ fontSize: "1.1rem" }}>{error}</p>}
         </form>
