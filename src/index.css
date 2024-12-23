@@ -329,6 +329,7 @@ padding: 10px 20px;
   width: 290px;
   max-width: 100%;
 }
+}
 
 @media(max-width:1578px) {
 
@@ -336,6 +337,7 @@ padding: 10px 20px;
   border-radius: 10px;
   width: 270px;
   max-width: 100%;
+}
 }
 
 @media(max-width:1498px) {
