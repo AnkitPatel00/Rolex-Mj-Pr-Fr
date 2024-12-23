@@ -278,10 +278,24 @@ padding: 10px 20px;
 
   /* cloths List end*/
 
+
+
+
+
  @media(max-width:1870px) {
 
    .filter-container{
     max-width: 300px;
+    width:100%;
+ padding: 20px;
+ }
+
+}
+
+ @media(max-width:1787px) {
+
+   .filter-container{
+    max-width: 250px;
     width:100%;
  padding: 20px;
  }
@@ -297,15 +311,55 @@ padding: 10px 20px;
   max-width: 100%;
 }
 
-
- .product-card{
-
-    flex-grow: 1;
-  
-}
 }
 
- @media(max-width:1425px) {
+ @media(max-width:1738px) {
+
+  .product-card-image{
+  border-radius: 10px;
+  width: 310px;
+  max-width: 100%;
+}
+ }
+
+@media(max-width:1658px) {
+
+  .product-card-image{
+  border-radius: 10px;
+  width: 290px;
+  max-width: 100%;
+}
+
+@media(max-width:1578px) {
+
+  .product-card-image{
+  border-radius: 10px;
+  width: 270px;
+  max-width: 100%;
+}
+
+@media(max-width:1498px) {
+
+  .product-card-image{
+  border-radius: 10px;
+  width: 250px;
+  max-width: 100%;
+}
+
+
+}
+
+ @media(max-width:1476px) {
+
+  .product-card-image{
+  border-radius: 10px;
+  width: 330px;
+  max-width: 100%;
+}
+
+}
+
+ @media(max-width:1376px) {
 
   .product-card-image{
   border-radius: 10px;
@@ -313,44 +367,48 @@ padding: 10px 20px;
   max-width: 100%;
 }
 
-
- .product-card{
-
-    flex-grow: 1;
-  
-}
 }
 
+ @media(max-width:1286px) {
 
- @media(max-width:1335px) {
+  .product-card-image{
+  border-radius: 10px;
+  width: 270px;
+  max-width: 100%;
+}
+
+}
+
+ @media(max-width:1196px) {
 
   .product-card-image{
   border-radius: 10px;
   width: 250px;
   max-width: 100%;
 }
- .product-card{
 
-    flex-grow: 1;
-}
 }
 
- @media(max-width:1185px) {
+ @media(max-width:1136px) {
+
+  
+   .filter-container{
+    max-width: 200px;
+    width:100%;
+ padding: 20px;
+ }
 
   .product-card-image{
   border-radius: 10px;
-  width: 210px;
+  width: 230px;
   max-width: 100%;
 }
- .product-card{
 
-    flex-grow: 1;
-}
 }
 
+ @media(max-width:1029px) {
 
- @media(max-width:1121px) {
-
+  
    .filter-container{
     max-width: 150px;
     width:100%;
@@ -359,14 +417,16 @@ padding: 10px 20px;
 
   .product-card-image{
   border-radius: 10px;
-  width: 150px;
+  width: 230px;
   max-width: 100%;
 }
- .product-card{
 
-    flex-grow: 1;
 }
-}
+
+
+
+
+
 
 
 
@@ -408,12 +468,31 @@ gap:20px;
   width: 250px;
   max-width: 100%;
 }
- .product-card{
 
-    flex-grow: 1;
-}
-   
    
   }
+
+
+   @media(max-width:856px) {
+
+  
+     .product-card-image{
+  border-radius: 10px;
+  width: 300px;
+  max-width: 100%;
+}
+
+}
+
+
+   @media(max-width:674px) {
+
+     .product-card-image{
+  border-radius: 10px;
+  width: 390px;
+  max-width: 100%;
+}
+
+}
 
 
