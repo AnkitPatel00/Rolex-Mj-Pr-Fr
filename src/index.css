@@ -246,6 +246,23 @@ padding: 10px 20px;
 
 }
 
+.orignal-price{
+  font-weight: lighter;
+  text-decoration: line-through;
+  font-size:15px;
+}
+.discount-percentage
+{
+   font-size: 20px;
+    margin-right: 5px;
+     color: green;
+      font-weight: normal
+}
+.discount-price{
+ font-size: 25px;
+    margin-right: 10px;
+}
+
 .product-card-image{
   border-radius: 10px;
   width: 330px;
@@ -279,10 +296,7 @@ padding: 10px 20px;
   /* cloths List end*/
 
 
-
-
-
- @media(max-width:1870px) {
+@media(max-width:1870px) {
 
    .filter-container{
     max-width: 300px;
@@ -373,6 +387,18 @@ padding: 10px 20px;
 
  @media(max-width:1286px) {
 
+  .orignal-price{
+ 
+  font-size:15px;
+}
+.discount-percentage
+{
+   font-size: 17px;
+}
+.discount-price{
+ font-size: 20px;
+}
+
   .product-card-image{
   border-radius: 10px;
   width: 270px;
@@ -424,6 +450,10 @@ padding: 10px 20px;
 }
 
 }
+
+
+
+
 
 
 
@@ -493,6 +523,18 @@ gap:20px;
   border-radius: 10px;
   width: 390px;
   max-width: 100%;
+}
+
+.orignal-price{
+ 
+  font-size:15px;
+}
+.discount-percentage
+{
+   font-size: 20px;
+}
+.discount-price{
+ font-size: 25px;
 }
 
 }
