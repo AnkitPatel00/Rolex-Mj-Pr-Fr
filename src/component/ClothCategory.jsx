@@ -18,7 +18,7 @@ const ClothCategory = () =>
     </div>
     <div className="col-md-6 text-center p-3 position-relative category-card">
       <Link className='link-underline link-underline-opacity-0' to={`/cloths`} state={"Women"}>
-        <img className="category-image img-fluid h-100 rounded-start object-fit-sm-contain" src="https://c.media-amazon.com/images/I/81dss+u7tmL._SX679_.jpg" height={200} width={600} />
+        <img className="category-image img-fluid h-100 rounded-start object-fit-sm-contain" src="https://m.media-amazon.com/images/I/817hXDIoKbL._SX679_.jpg" height={200} width={550} />
         <div className="overlay-text">
           <h3 className="py-3 text-white">Women's Clothing</h3>
         </div>
