@@ -304,7 +304,7 @@ padding: 10px 20px;
 }
   }
 
-    @media(max-width:1690px){
+    @media(max-width:1620px){
 .product-card-image{
   width: 250px;
 }

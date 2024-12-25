@@ -37,8 +37,9 @@ function App() {
   
   return (
     <>
+     
       <LoginPleaseToast/>
-      <Header  />
+      <Header />
      <Outlet />
       <Footer/>
     </>
