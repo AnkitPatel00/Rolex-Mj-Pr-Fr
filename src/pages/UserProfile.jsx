@@ -103,20 +103,63 @@ dispatch(userFetchAsync())
 
               <LoadingSpinner spinner={isloggin && userStatus === "userinfo/Loading"} />
             
-{ isloggin && userStatus === "userinfo/success" &&
-              <div className="card-body" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              
-              <div style={{background:"lightgrey",width:"200px",height:"200px",border:"1px solid lightgrey",borderRadius:"100px",display:"flex",justifyContent:"center",alignItems:"center"}}>
- <h3 className="display-7 text-light">{user.firstname} {user.lastname}</h3>
-              </div>
+
+ {isloggin && userStatus === "userinfo/success" && (
+        <div
+          className="card-body text-center"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {/* Responsive Profile Placeholder */}
+          <div
+            className="d-flex justify-content-center align-items-center mb-3"
+            style={{
+              background: "lightgrey",
+              width: "150px",
+              height: "150px",
+              border: "1px solid lightgrey",
+              borderRadius: "50%",
+            }}
+          >
+            <h3 className="display-7 text-light text-center">
+              {user.firstname} {user.lastname}
+            </h3>
+          </div>
+
           <p className="fs-5 text-muted">Username: {user.username}</p>
-          <p className="fs-6 text-muted">Email: {user.email}</p>
+
+          {/* Responsive Email */}
+          <p className="fs-6 text-muted text-break">
+            Email: {user.email}
+          </p>
+
           <p className="fs-6 text-muted">Phone: {user.mobilenumber}</p>
-                <Link className="btn btn-outline-primary mt-3" to="/user/profile/edit" state={user}>Edit Profile</Link>
-                  <p className="mt-3">Auto Logout in <span className="fw-bold">{(logoutTime*1.6667e-5).toFixed(0)}</span> Minutes</p>
-            </div>
+
+          {/* Edit Profile Button */}
+          <Link
+            className="btn btn-outline-primary mt-3"
+            to="/user/profile/edit"
+            state={user}
+          >
+            Edit Profile
+          </Link>
+
+          {/* Auto Logout Message */}
+          <p className="mt-3">
+            Auto Logout in{" "}
+            <span className="fw-bold">
+              {(logoutTime * 1.6667e-5).toFixed(0)}
+            </span>{" "}
+            Minutes
+          </p>
+        </div>
+      )}
+
             
-}
+
       </div>
     </div>
 
