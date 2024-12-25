@@ -120,7 +120,7 @@ const ProductsCard = ({ cloths }) => {
             </Link>
             
 
-            <h3 style={{ fontSize: "20px", fontWeight: "normal" }}>{cloth.title.substring(0, 20) + '...'}</h3>
+            <h3 className="product-title" >{cloth.title.substring(0, 20) + '...'}</h3>
           <RatingStars rating={cloth.rating}/>  
             <h5>&#8377;<span className="discount-price" >{(cloth.discountedPrice).toFixed(2)}</span>
             
