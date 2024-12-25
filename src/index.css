@@ -233,6 +233,7 @@
    display: flex;
         gap: 30px;
          flex-wrap: wrap;
+         justify-content: space-around;
 padding: 10px 20px;
 
 }
@@ -287,178 +288,56 @@ padding: 10px 20px;
   /* filter container */
 
   .filter-container{
- max-width: 300px;
+ max-width: 380px;
  padding: 20px;
   }
 
 
+  @media(max-width:1759px){
+.product-card-image{
+  width: 290px;
+}
+  }
+
+    @media(max-width:1678px){
+.product-card-image{
+  width: 250px;
+}
+  }
+
+
+@media(max-width:1431px){
+.product-card-image{
+  width: 300px;
+}
+  }
+
+  @media(max-width:1294px){
+.product-card-image{
+  width: 260px;
+}
+  }
+
+    @media(max-width:1169px){
+.filter-container{
+    max-width: 250px;
+ }
+ .product-card-image{
+  width: 230px;
+}
+  }
+
+      @media(max-width:1074px){
+.filter-container{
+    max-width: 200px;
+ }
+ .product-card-image{
+  width: 200px;
+}
+  }
+
 
   /* cloths List end*/
-
-
-@media(max-width:1870px) {
-
-   .filter-container{
-    max-width: 300px;
-    width:100%;
- padding: 20px;
- }
-
-}
-
- @media(max-width:1787px) {
-
-   .filter-container{
-    max-width: 250px;
-    width:100%;
- padding: 20px;
- }
-
-}
-
-
- @media(max-width:1765px) {
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 330px;
-  max-width: 100%;
-}
-
-}
-
- @media(max-width:1738px) {
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 310px;
-  max-width: 100%;
-}
- }
-
-@media(max-width:1658px) {
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 290px;
-  max-width: 100%;
-}
-}
-
-@media(max-width:1578px) {
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 270px;
-  max-width: 100%;
-}
-}
-
-@media(max-width:1498px) {
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 250px;
-  max-width: 100%;
-}
-
-
-}
-
- @media(max-width:1476px) {
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 330px;
-  max-width: 100%;
-}
-
-}
-
- @media(max-width:1376px) {
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 300px;
-  max-width: 100%;
-}
-
-}
-
- @media(max-width:1286px) {
-
-  .orignal-price{
- 
-  font-size:15px;
-}
-.discount-percentage
-{
-   font-size: 17px;
-}
-.discount-price{
- font-size: 20px;
-}
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 270px;
-  max-width: 100%;
-}
-
-}
-
- @media(max-width:1196px) {
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 250px;
-  max-width: 100%;
-}
-
-}
-
- @media(max-width:1136px) {
-
-  
-   .filter-container{
-    max-width: 200px;
-    width:100%;
- padding: 20px;
- }
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 230px;
-  max-width: 100%;
-}
-
-}
-
- @media(max-width:1029px) {
-
-  
-   .filter-container{
-    max-width: 150px;
-    width:100%;
- padding: 20px;
- }
-
-  .product-card-image{
-  border-radius: 10px;
-  width: 230px;
-  max-width: 100%;
-}
-
-}
-
-
-
-
-
-
-
-
-
 
 
 
