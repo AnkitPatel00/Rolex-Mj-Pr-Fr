@@ -17,8 +17,10 @@ const OrderPlace = () => {
   const [orderDetails, setOrderDetails] = useState({})
   const [selectedAdress, setSelectedAddress] = useState("")
 
-  const [error,setError] = useState(false)
+  const [error, setError] = useState(false)
   
+ 
+  // console.log("set",selectedAdress)
   
   const dispatch = useDispatch()
   const location = useLocation()
@@ -78,10 +80,10 @@ const orderClothsComp = orderState.cloths.map((cloth) => (
 
   const defaultAddress = address?.find((address) => address.setasDefault)
 
+  //  console.log("sadasd",defaultAddress)
 
   const allAddress = address?.map((address) => Object.values(address).slice(2, 10).join(', '))
 
-  console.log(address,allAddress.length<1)
 
    const deliveryTotal =parseInt(orderState.priceDetails.totalAmount) + 40
 
@@ -91,7 +93,7 @@ const orderClothsComp = orderState.cloths.map((cloth) => (
   
   
   useEffect(() => {
-    if (defaultAddress)
+    if (defaultAddress && !selectedAdress)
     {
 setSelectedAddress(Object.values(defaultAddress).slice(2, 10).join(', '))
     }
@@ -118,7 +120,7 @@ const cloths = orderState.cloths.map((cloth) => ({ clothsId: cloth.clothsId._id,
       
       setOrderDetails(order)
     
-    }, [addressStatus,paymentMethod])
+    }, [addressStatus,paymentMethod,selectedAdress])
   
 
     const handleOrder = () => {
@@ -128,6 +130,8 @@ const cloths = orderState.cloths.map((cloth) => ({ clothsId: cloth.clothsId._id,
         cloths: orderCloths,
         ...orderDetails
       }
+
+      console.log("order",order)
 
       dispatch(addOrderAsync(order)).then(() => {
         dispatch(removeAllCartItemsAsync())
