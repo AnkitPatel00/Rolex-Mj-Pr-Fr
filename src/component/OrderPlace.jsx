@@ -15,6 +15,7 @@ const OrderPlace = () => {
     const [paymentMethod, setPaymentMethod] = useState("")
 
   const [orderDetails, setOrderDetails] = useState({})
+  const [selectedAdress, setSelectedAddress] = useState("")
 
   const [error,setError] = useState(false)
   
@@ -75,9 +76,9 @@ const orderClothsComp = orderState.cloths.map((cloth) => (
   
   const { orderStaus } = useSelector((state) => state.orderState)
 
-  const defaultaAdddress = address?.find((address) => address.setasDefault === true)
+  const allAddress = address?.map((address) => Object.values(address).slice(2,9).join(', '))
 
-  const addressString = defaultaAdddress && Object.values(defaultaAdddress).slice(2,9).join(', ')
+  // const addressString = address && Object.values(address).slice(2,9).join(', ')
 
    const deliveryTotal =parseInt(orderState.priceDetails.totalAmount) + 40
 
@@ -101,7 +102,7 @@ const cloths = orderState.cloths.map((cloth) => ({ clothsId: cloth.clothsId._id,
 
     useEffect(() => {
 
-      const order = {address:addressString,priceDetails:orderState.priceDetails,paymentMethod:paymentMethod}  
+      const order = {address:selectedAdress,priceDetails:orderState.priceDetails,paymentMethod:paymentMethod}  
       
       setOrderDetails(order)
     
@@ -109,7 +110,7 @@ const cloths = orderState.cloths.map((cloth) => ({ clothsId: cloth.clothsId._id,
   
 
     const handleOrder = () => {
-    if (defaultaAdddress && paymentMethod)
+    if (allAddress && paymentMethod)
     {
       const order = {
         cloths: orderCloths,
@@ -140,16 +141,25 @@ const cloths = orderState.cloths.map((cloth) => ({ clothsId: cloth.clothsId._id,
       <p>Email: {user.email}</p>
       <hr />
       <p>
-        Address: {defaultaAdddress ?"" :address.length>0 ? "Set Default Address":"Add Address"}
+        Address: {allAddress.length>0 ? "Select Address" : "Add Atleast One Address"}
       </p>
-      {defaultaAdddress &&  <p>{addressString}</p>}
+      <div>
+      {allAddress && allAddress.map((address) => {
+       <>
+         <input type="radio" name="address" id={address} value={address} onClick={(e)=>setSelectedAddress(e.target.value)} />
+         <label htmlFor={address}>{address}</label>
+
+        </>
+      })}
+ </div>
+
       {error && <p className="text-danger">Please Add All Information</p>}
       <div className="d-flex align-items-center mt-3">
         <button className="btn btn-warning me-2" onClick={handleOrder}>
           {orderStaus === "addOrder/Loading" ? "Please Wait" : "Place Order"}
         </button>
 
-         <Link className="fs-6 btn btn-secondary" to={ address.length===0 ? `/user/profile/address` :`/user/profile/${user.username}`}>{defaultaAdddress ?"Change adderss" :address.length>0 ? "Set Default Address":"Add Address"}</Link>
+         <Link className="fs-6 btn btn-secondary" to={ address.length===0 ? `/user/profile/address` :`/user/profile/${user.username}`}>{allAddress ?"Change adderss" :address.length>0 ? "Set Default Address":"Add Address"}</Link>
       </div>
     </>
   )
