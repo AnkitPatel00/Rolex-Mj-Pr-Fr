@@ -40,7 +40,7 @@ const Login = () => {
   
   return (
 
-    <div style={{border:"0px solid red",maxWidth:"100%",display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",gap:"30px",marginTop:"100px"}}>
+    <div style={{border:"0px solid red",maxWidth:"100%",display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",gap:"20px",marginTop:"100px"}}>
 
     
       <div style={{border:"0px solid green"}}>
