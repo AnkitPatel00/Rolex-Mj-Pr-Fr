@@ -49,11 +49,11 @@ const Register = () => {
 
   return (
 
-       <div style={{border:"0px solid red",maxWidth:"100%",display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",gap:"30px",marginTop:"100px"}}>
+       <div style={{border:"0px solid red",maxWidth:"100%",display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",gap:"20px",marginTop:"100px"}}>
 
       {/* image card */}
       <div style={{border:"0px solid green"}}>
-      <img src="https://madfrog.in/wp-content/uploads/2024/08/3-imageee.png.webp" style={{width:"100%",maxWidth:"600px"}} alt="cloths image" />
+      <img src="https://madfrog.in/wp-content/uploads/2024/08/3-imageee.png.webp" style={{width:"100%",maxWidth:"500px"}} alt="cloths image" />
       </div>
        {/* login form */}
      

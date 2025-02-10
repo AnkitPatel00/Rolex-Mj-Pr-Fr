@@ -44,7 +44,7 @@ const Login = () => {
 
     
       <div style={{border:"0px solid green"}}>
-      <img src="https://madfrog.in/wp-content/uploads/2024/08/3-imageee.png.webp" style={{width:"100%",maxWidth:"600px"}} alt="cloths image" />
+      <img src="https://madfrog.in/wp-content/uploads/2024/08/3-imageee.png.webp" style={{width:"100%",maxWidth:"500px"}} alt="cloths image" />
       </div>
      
       
