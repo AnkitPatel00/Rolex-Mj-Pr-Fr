@@ -21,6 +21,7 @@ const AddAndUpdateAddress = () => {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [pincode, setPincode] = useState("");
+  const [phoneNumber,setPhoneNumber] = useState("");
 
    const [isAddressDefault, setIsAddressDefault] = useState(false);
 
@@ -70,6 +71,7 @@ setIsAddressDefault(true)
       state,
       country,
       pincode,
+      phoneNumber
     };
 
     if (isUpdate) {
@@ -112,6 +114,7 @@ setIsAddressDefault(true)
         <input className="form-control mb-3" type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
         <label className="form-label">Pincode: </label>
         <input className="form-control mb-3" type="number" value={pincode} onChange={(e) => setPincode(e.target.value)} />
+        <input className="form-control mb-3" type="number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
         {isUpdate && <><input type="checkbox" checked={isAddressDefault}  className="form-checkbox me-2"id="default" onChange={handleSetDefault}/><label className="form-label" htmlFor="default">Set as Default</label><br/></>}
         
         {isUpdate?<button className="btn btn-primary" disabled={addressStatus==="updateAddress/Loading"|| addressStatus==="defaultAddress/Loading" ?true:false}>{addressStatus==="updateAddress/Loading" || addressStatus==="defaultAddress/Loading" ?"Updating...":"Update Address"}</button>:
