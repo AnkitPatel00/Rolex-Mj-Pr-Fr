@@ -196,6 +196,7 @@ dispatch(userFetchAsync())
                   <p><strong>State:</strong> {address.state}</p>
                   <p><strong>Country:</strong> {address.country}</p>
                   <p><strong>Pincode:</strong> {address.pincode}</p>
+                  <p><strong>Phone Number:</strong> {address.phoneNumber}</p>
 
                   <div className="d-flex justify-content-between mt-3">
                     <Link className="btn btn-outline-warning" to="/user/profile/address" state={address}>Edit</Link>
