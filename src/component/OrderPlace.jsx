@@ -76,15 +76,27 @@ const orderClothsComp = orderState.cloths.map((cloth) => (
   
   const { orderStaus } = useSelector((state) => state.orderState)
 
-  const allAddress = address?.map((address) => Object.values(address).slice(2,9).join(', '))
+  const defaultAddress = address?.find((address) => address.setasDefault)
 
-  // const addressString = address && Object.values(address).slice(2,9).join(', ')
+
+  const allAddress = address?.map((address) => Object.values(address).slice(2, 10).join(', '))
+
+  console.log(address,allAddress.length<1)
 
    const deliveryTotal =parseInt(orderState.priceDetails.totalAmount) + 40
 
    const handlePayment = (e) => {
     setPaymentMethod(e.target.value)
-  }
+   }
+  
+  
+  useEffect(() => {
+    if (defaultAddress)
+    {
+setSelectedAddress(Object.values(defaultAddress).slice(2, 10).join(', '))
+    }
+  },[defaultAddress])
+
 
   useEffect(() => {
     dispatch(fetchOrderAsync())
@@ -141,15 +153,15 @@ const cloths = orderState.cloths.map((cloth) => ({ clothsId: cloth.clothsId._id,
       <p>Email: {user.email}</p>
       <hr />
       <p>
-        Address: {allAddress.length>0 ? "Select Address" : "Add Atleast One Address"}
+        Address: {allAddress.length<1 ? "Add Atleast One Address":selectedAdress?selectedAdress : "Select Address"}
       </p>
       <div>
       {allAddress && allAddress.map((address) => {
-       <>
-         <input type="radio" name="address" id={address} value={address} onClick={(e)=>setSelectedAddress(e.target.value)} />
-         <label htmlFor={address}>{address}</label>
+       return(<div className="form-check" key={address}>
+         <input className="form-check-input" checked={selectedAdress===address} type="radio" name="address" id={address} value={address} onChange={(e)=>setSelectedAddress(e.target.value)} />
+         <label htmlFor={address} >{address}</label>
 
-        </>
+        </div>)
       })}
  </div>
 
@@ -159,7 +171,8 @@ const cloths = orderState.cloths.map((cloth) => ({ clothsId: cloth.clothsId._id,
           {orderStaus === "addOrder/Loading" ? "Please Wait" : "Place Order"}
         </button>
 
-         <Link className="fs-6 btn btn-secondary" to={ address.length===0 ? `/user/profile/address` :`/user/profile/${user.username}`}>{allAddress ?"Change adderss" :address.length>0 ? "Set Default Address":"Add Address"}</Link>
+         {allAddress.length<1 && <Link className="fs-6 btn btn-primary" to={`/user/profile/address`}>Add New Address</Link>}
+        
       </div>
     </>
   )
