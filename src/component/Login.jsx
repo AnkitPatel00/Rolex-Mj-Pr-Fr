@@ -40,7 +40,7 @@ const Login = () => {
   
   return (
 
-    <div style={{border:"0px solid red",maxWidth:"100%",display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",gap:"30px"}}>
+    <div style={{border:"0px solid red",maxWidth:"100%",display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",gap:"30px",marginTop:"100px"}}>
 
     
       <div style={{border:"0px solid green"}}>
@@ -53,16 +53,17 @@ const Login = () => {
           border: "0.5px solid lightgrey", 
           boxShadow: "1px 2px 3px  grey",
     width: "100%", 
-    maxWidth: "800px", 
+    maxWidth: "500px", 
     height: "400px", 
     display: "flex", 
     alignItems: "center", 
           justifyContent: "center",
           margin: "0px 50px",
-    borderRadius:"50px"
+          borderRadius: "50px",
+    
   }}
 >
-  <form action="submit" onSubmit={handleLogin} style={{ width: "100%", maxWidth: "400px",padding:"20px" }}> {/* Set form width */}
+  <form action="submit" onSubmit={handleLogin} style={{ width: "100%", maxWidth: "400px",padding:"20px" }}> 
           <h1 style={{ marginBottom: "20px" }}>Login</h1>
           
           <div className="mb-3">

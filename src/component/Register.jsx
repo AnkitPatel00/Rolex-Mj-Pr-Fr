@@ -49,7 +49,7 @@ const Register = () => {
 
   return (
 
-       <div style={{border:"0px solid red",maxWidth:"100%",display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",gap:"30px",marginTop:"20px"}}>
+       <div style={{border:"0px solid red",maxWidth:"100%",display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",gap:"30px",marginTop:"100px"}}>
 
       {/* image card */}
       <div style={{border:"0px solid green"}}>
@@ -63,7 +63,7 @@ const Register = () => {
           border: "0.5px solid lightgrey", 
           boxShadow: "1px 2px 3px  grey",
     width: "100%", 
-    maxWidth: "600px", 
+    maxWidth: "500px", 
     maxHeight: "600px", 
     display: "flex", 
     alignItems: "center", 
