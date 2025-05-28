@@ -124,8 +124,6 @@ const OrderPlace = () => {
   }, [addressStatus, paymentMethod, selectedAdress]);
 
   const handleOrder = () => {
-    console.log(handleOrder);
-
     if (allAddress && paymentMethod && selectedAdress) {
       const order = {
         cloths: orderCloths,
